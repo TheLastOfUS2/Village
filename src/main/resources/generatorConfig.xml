@@ -16,7 +16,7 @@
 
         <!-- !!!! Database Configurations !!!! -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/netctoss"
+                        connectionURL="jdbc:mysql://localhost:3306/village"
                         userId="root"
                         password="123456"/>
 
@@ -44,6 +44,6 @@
 
         <!-- !!!! Table Configurations !!!! -->
         <!--设置数据库的表,可设置多个-->
-        <table tableName="admin_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_user" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
