@@ -9,6 +9,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +26,6 @@ public class UserController {
 
     @RequestMapping("/index")
     public String frontpage(){
-
-//        int i = 1/0;
         return "index";
     }
 
@@ -64,6 +63,7 @@ public class UserController {
 
         //将验证码保存到session中
         request.getSession().setAttribute("verifyCode",verifyCode.getText());
+        System.out.println("--**-**-*-*-**"+verifyCode.getText());
 
 
         //获得response对象的输出流用于图像的写入
@@ -72,4 +72,18 @@ public class UserController {
         VerifyCode.output(image,os);//将图片对象映射到输出流中
     }
 
+    @ResponseBody
+    @RequestMapping("/judgeCode")
+    public AjaxResult judgeCode(HttpServletRequest request, @RequestParam("code")String code){
+        String verifyCode = (String) request.getSession().getAttribute("verifyCode");
+        if (!(code.equals(verifyCode))){
+            AjaxResult ajaxResult = new AjaxResult();
+            ajaxResult.setMessage("验证码不正确");
+            ajaxResult.setErrorCode(1);
+            return ajaxResult;
+        }
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setErrorCode(0);
+        return ajaxResult;
+    }
 }
