@@ -281,4 +281,8 @@
       update_id = #{updateId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllUser" resultMap="BaseResultMap">
+    SELECT * FROM sys_user
+  </select>
 </mapper>
