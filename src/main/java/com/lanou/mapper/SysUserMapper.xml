@@ -282,7 +282,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllUser" resultMap="BaseResultMap">
+  <select id="getAllUser" resultMap="BaseResultMap" useCache="true">
     SELECT * FROM sys_user
   </select>
 </mapper>
