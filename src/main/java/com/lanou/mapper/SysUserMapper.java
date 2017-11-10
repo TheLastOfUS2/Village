@@ -2,6 +2,8 @@ package com.lanou.mapper;
 
 import com.lanou.bean.SysUser;
 
+import java.util.List;
+
 public interface SysUserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    List<SysUser> getAllUser();
+
 }

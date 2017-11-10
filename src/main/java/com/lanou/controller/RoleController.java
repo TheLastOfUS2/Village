@@ -25,6 +25,15 @@ public class RoleController {
         return "admin-role";
     }
 
+    @RequestMapping(value = "/toAdminRoleAdd")
+    public String toAdminRoleAdd(){
+        return "admin-role-add";
+    }
+
+
+
+
+
     @ResponseBody
     @RequestMapping(value = "/getAllRoles")
     public AjaxResult getAllRoles(){

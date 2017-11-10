@@ -213,4 +213,31 @@ public class SysUser implements Serializable {
     public void setUpdateId(Integer updateId) {
         this.updateId = updateId;
     }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realname='" + realname + '\'' +
+                ", roleId=" + roleId +
+                ", usertype=" + usertype +
+                ", state=" + state +
+                ", thirdId='" + thirdId + '\'' +
+                ", endTime=" + endTime +
+                ", email='" + email + '\'' +
+                ", tel='" + tel + '\'' +
+                ", address='" + address + '\'' +
+                ", titleUrl='" + titleUrl + '\'' +
+                ", remark='" + remark + '\'' +
+                ", theme='" + theme + '\'' +
+                ", backSiteId=" + backSiteId +
+                ", createSiteId=" + createSiteId +
+                ", createTime=" + createTime +
+                ", createId=" + createId +
+                ", updateTime=" + updateTime +
+                ", updateId=" + updateId +
+                '}';
+    }
 }
