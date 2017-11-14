@@ -19,7 +19,25 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public List<SysUser> getAllUser() {
-        System.out.println("1"+sysUserMapper.getAllUser());
+        System.out.println("1" + sysUserMapper.getAllUser());
         return sysUserMapper.getAllUser();
+    }
+
+    @Override
+    public SysUser getUserByName(String username) {
+        System.out.println(1);
+        SysUser userByName = sysUserMapper.getUserByName(username);
+        System.out.println(userByName);
+//        if (userByName!=null && userByName.size()>0) {
+////            SysUser sysUser = new SysUser();
+////            sysUser.setUsername("wangcai");
+////            sysUser.setPassword("1234");
+////            return sysUser;
+//            return userByName.get(0);
+//        }
+//        else {
+//            return null;
+//        }
+        return userByName;
     }
 }

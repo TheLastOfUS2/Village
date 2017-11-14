@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanou.mapper.SysUserMapper">
-  <cache type="com.lanou.cache.RedisCache"/>
+  <!--<cache type="com.lanou.cache.RedisCache"/>-->
   <resultMap id="BaseResultMap" type="com.lanou.bean.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -271,8 +271,7 @@
       tel = #{tel,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       title_url = #{titleUrl,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      theme = #{theme,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},theme = #{theme,jdbcType=VARCHAR},
       back_site_id = #{backSiteId,jdbcType=INTEGER},
       create_site_id = #{createSiteId,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -282,7 +281,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllUser" resultMap="BaseResultMap" useCache="true">
+  <select id="getAllUser" resultMap="BaseResultMap">
     SELECT * FROM sys_user
+  </select>
+  <select id="getUserByName" resultMap="BaseResultMap">
+    select * from sys_user WHERE  username = #{username}
   </select>
 </mapper>

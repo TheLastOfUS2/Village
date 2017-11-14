@@ -1,6 +1,7 @@
 package com.lanou.controller;
 
 import com.lanou.bean.SysUser;
+
 import com.lanou.exception.CustomException;
 import com.lanou.service.SysUserService;
 import com.lanou.util.AjaxResult;
@@ -68,7 +69,6 @@ public class UserController {
 
         //将验证码保存到session中
         request.getSession().setAttribute("verifyCode",verifyCode.getText());
-        System.out.println("--**-**-*-*-**"+verifyCode.getText());
 
 
         //获得response对象的输出流用于图像的写入
@@ -86,10 +86,10 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping("/judgeCode")
+    @RequestMapping(value = "/judgeCode")
     public AjaxResult judgeCode(HttpServletRequest request, @RequestParam("code")String code){
         String verifyCode = (String) request.getSession().getAttribute("verifyCode");
-        if (!(code.equals(verifyCode))){
+        if (!(code.equalsIgnoreCase(verifyCode))){
             AjaxResult ajaxResult = new AjaxResult();
             ajaxResult.setMessage("验证码不正确");
             ajaxResult.setErrorCode(1);
@@ -98,5 +98,10 @@ public class UserController {
         AjaxResult ajaxResult = new AjaxResult();
         ajaxResult.setErrorCode(0);
         return ajaxResult;
+    }
+
+    @RequestMapping(value = "/welcome")
+    public String toWelcome(){
+        return "welcome";
     }
 }

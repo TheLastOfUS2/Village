@@ -30,7 +30,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
         String msg = exception.getMessage();
         httpServletRequest.setAttribute("msg",msg);
         try {
-            httpServletRequest.getRequestDispatcher("/WEB-INF/error.jsp").forward(httpServletRequest,httpServletResponse);
+            httpServletRequest.getRequestDispatcher("/login").forward(httpServletRequest,httpServletResponse);
         } catch (ServletException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {

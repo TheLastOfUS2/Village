@@ -28,7 +28,7 @@
 <div class="header"></div>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
-        <form class="form form-horizontal" action="/loginsubmit" method="post">
+        <form class="form form-horizontal" action="/loginsubmit" method="post" onSubmit="return check();">
             <div class="row cl">
                 <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                 <div class="formControls col-xs-8">
@@ -59,13 +59,15 @@
                 <div class="formControls col-xs-8 col-xs-offset-3" id="errorMessage" style="color: red">
                     *&nbsp;&nbsp;验证码有错误
                 </div>
+                <div class="formControls col-xs-8 col-xs-offset-3" id="errorMessage1" style="color: red">
+                    ${msg}
+                </div>
 
             </div>
             <div class="row cl">
                 <div class="formControls col-xs-8 col-xs-offset-3">
                     <input name="" type="submit" class="btn btn-success radius size-L"
-                           value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" id="loginButton"
-                            onclick="judgeSubmit()">
+                           value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" id="loginButton">
                     <input name="" type="reset" class="btn btn-default radius size-L"
                            value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
                 </div>
@@ -94,6 +96,7 @@
 
     function errorCodeHide() {
         $("#errorMessage").hide();
+        $("#errorMessage1").hide();
     }
 
     function ass() {
@@ -119,13 +122,33 @@
         })
     }
 
+    //点击提交抛出异常信息
     function judgeSubmit() {
         var verifyCode = $("#errorMessage").attr("canSubmit");
         if (verifyCode!="1"){
             window.location.href="/login";
         }
-
     }
+
+    function check(){
+        var verifyCode = $("#errorMessage").attr("canSubmit");
+        if (verifyCode!="1"){
+            alert("验证码错误,请重新输入");
+            return false;
+        }else if (""==$("#username").val()){
+            alert("用户名不能为空")
+            return false;
+        }
+        else if (""==$("#password").val()){
+            alert("密码不能为空")
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
 </script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
 </html>

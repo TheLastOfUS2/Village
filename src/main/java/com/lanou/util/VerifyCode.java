@@ -128,8 +128,7 @@ public class VerifyCode {
 
         StringBuilder sb = new StringBuilder();//用来装载生成的验证码文本
 
-// 向图片中画4个字符
-
+        // 向图片中画4个字符
         for (int i = 0; i < 4; i++) {//循环四次，每次生成一个字符
 
             String s = randomChar() + "";//随机生成一个字母

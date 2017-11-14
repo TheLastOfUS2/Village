@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface SysUserService {
     List<SysUser> getAllUser();
+
+    SysUser getUserByName(String username);
 }

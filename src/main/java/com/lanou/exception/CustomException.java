@@ -8,7 +8,9 @@ public class CustomException extends Exception {
 
     public CustomException(String message) {
         super(message);
+        this.message = message;
     }
+
 
     @Override
     public String getMessage() {

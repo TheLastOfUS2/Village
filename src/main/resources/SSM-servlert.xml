@@ -12,6 +12,7 @@
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".html"/>
     </bean>
+    <bean class="com.lanou.exception.CustomExceptionResolver"/>
     <!--开启AOP的对类代理-->
     <aop:config proxy-target-class="true"/>
     <!--开启shiro的注解支持-->
